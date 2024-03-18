@@ -6,9 +6,7 @@ public class Help {
     assertThat(getStarted).hasAttribute("href", "/docs/intro");
     getStarted.click();
 
-    У Playwright есть концепция BrowserContext , которая представляет собой изолированный в памяти
-    профиль браузера.
-    Рекомендуется создавать новый BrowserContext для каждого теста, чтобы они не мешали друг другу.
+
 
     Browser browser = playwright.chromium().launch();
     BrowserContext context = browser.newContext();
