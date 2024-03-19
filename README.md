@@ -5,5 +5,5 @@
 В проекте использовать стек Java, Gradle, JUnit5, Playwright , Faker/ либо любой другой генератор данных, Allure2. 
 После прохождения тестов должен формироваться Allure-отчет.
 
-Установить и запустить Docker desktop
+Установить и запустить Docker desktop.
 Поднять контейнер из https://github.com/microservices-demo/microservices-demo
