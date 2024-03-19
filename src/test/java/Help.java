@@ -7,11 +7,11 @@ public class Help {
     getStarted.click();
 
 
-
     Browser browser = playwright.chromium().launch();
     BrowserContext context = browser.newContext();
     Page page = context.newPage();
 
 
-     */
+   /* expect(locator).toHaveValue()  - проверка что элемент
+    имеет такое значение */
 }

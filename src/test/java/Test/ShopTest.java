@@ -1,4 +1,5 @@
 package Test;
+import Pages.CartPage;
 import Pages.MainPage;
 import Pages.CataloguePage;
 import org.junit.jupiter.api.Test;
@@ -35,5 +36,8 @@ public class ShopTest extends BaseTest {
     public void addToCart() {
         new CataloguePage(page).addToCart();
 
+    }
+    public void checkItemsSumTest(){
+        Assert.assertEquals(CartPage.currentItemPriceDouble(), CartPage.orderSubtotalValueDouble());
     }
 }
