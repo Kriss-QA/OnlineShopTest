@@ -1,10 +1,11 @@
 package Test;
+
 import Pages.CartPage;
 import Pages.MainPage;
 import Pages.CataloguePage;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ShopTest extends BaseTest {
     public final static String URL_MAIN_PAGE = "http://localhost.html";
@@ -25,19 +26,10 @@ public class ShopTest extends BaseTest {
         MainPage mainPage = new MainPage(page);
         mainPage.openMainPage(URL_MAIN_PAGE);
         new MainPage(page).registrationUser();
-
-    }
-    public void clickOnCatalogueButton() {
         new MainPage(page).catalogueButton();
-    }
-
-
-    //  вызываем методы с CataloguePage
-    public void addToCart() {
         new CataloguePage(page).addToCart();
+        page.waitForLoadState();
 
-    }
-    public void checkItemsSumTest(){
-        Assert.assertEquals(CartPage.currentItemPriceDouble(), CartPage.orderSubtotalValueDouble());
+        Assert.assertEquals(CartPage.getItemsSum(), CartPage.getSubTotalValue());
     }
 }

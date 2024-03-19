@@ -6,9 +6,12 @@ import com.microsoft.playwright.Page;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CartPage {
-    protected  Page page;
+    protected static Page page;
     public Locator itemsPrice;
-    public Locator orderSubtotal;
+    public static Locator orderSubtotal;
+    public static double itemsSum;
+    public static double SubtotalValue;
+
 
 
 
@@ -20,7 +23,6 @@ public class CartPage {
     // Найдем все элементы с классом "item" на странице корзины
     public void sumAllItemsValue() {
         Locator itemsPrice = page.locator("//tr[@class='item']/td[6]");
-        double itemsSum = 0;
         for (int i = 0; i < itemsPrice.count(); i++) {
             //цикл, который пройдется по селектору с ценами $0.00
 
@@ -29,22 +31,23 @@ public class CartPage {
             double currentItemPriceDouble = Double.parseDouble(currentItemPriceWithout$);
 
             itemsSum += currentItemPriceDouble;
-        }
-        ;
-        public void getItemsSum() {
-            System.out.println(itemsSum());
+        };
+    }
+        public static void getItemsSum() {
+            System.out.println(itemsSum);
         }
 
-        public void SubtotalValue() {
+        public static void SubTotalValue() {
             orderSubtotal = page.locator("th#orderSubtotal");
             String orderSubtotalValue = orderSubtotal.innerText();
             String orderSubtotalValueWithout$ = orderSubtotalValue.substring(1);
             double orderSubtotalValueDouble = Double.parseDouble(orderSubtotalValueWithout$);
+            SubtotalValue += orderSubtotalValueDouble;
         }
-        public void getOrderTotal () {
-            System.out.println(orderSubtotalValueDouble());
+    public static void getSubTotalValue() {
+            System.out.println(SubtotalValue);
         }
     }
-    }
+
 
 
