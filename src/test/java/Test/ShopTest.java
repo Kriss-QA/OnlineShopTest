@@ -36,8 +36,4 @@ public class ShopTest extends BaseTest {
         new CataloguePage(page).addToCart();
 
     }
-
-
-// Проверка на странице корзины суммы товаров
-assertEquals(totalPriceValue, totalPrice)
 }

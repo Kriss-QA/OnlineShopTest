@@ -31,20 +31,16 @@ public class CartPage {
 
     // Найдем все элементы с классом "item" на странице корзины
     public void sumAllItems() {
-        List<Locator> itemPrice = page.querySelectorAll(".item");
+        List <Locator> itemPrice = page.querySelectorAll(".item");
         for (Locator element : itemPrice) ;
     }
-
     {
         // Получим текстовое содержимое каждого элемента и преобразуем его в число
-        int value = Integer.parseInt(element.textContent());
-
+        int value = Integer.parseInt(itemPrice.textContent());
 
         // Добавим значение к общей сумме
         itemsSum = itemsSum + value;
     }
-
-
 
     public void totalPrice() {
 
@@ -67,16 +63,15 @@ public class CartPage {
     }
     private double extractValue(String text) {
         Pattern pattern = Pattern.compile("\\$([\\d.]+)");
-        Matcher matcher = pattern.value(text);
+        Matcher matcher = pattern.value(String text);
         if (matcher.find()) {
             return Double.parseDouble(matcher.group(1));
         } else {
             return 0.0;
         }
     }
-
     }
-}
+
 
     /* expect(locator).toHaveValue()  - проверка что элемент
     имеет такое значение */
