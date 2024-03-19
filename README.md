@@ -6,4 +6,5 @@
 После прохождения тестов должен формироваться Allure-отчет.
 
 Установить и запустить Docker desktop.
+
 Поднять контейнер из https://github.com/microservices-demo/microservices-demo
