@@ -12,7 +12,7 @@ public class CataloguePage {
     public final Locator addToCartItem1;
     public final Locator addToCartItem2;
     public final Locator addToCartItem3;
-    public final Locator goToCart;
+
 
     public CataloguePage(Page page) {
         this.page = page;
@@ -23,21 +23,16 @@ public class CataloguePage {
         addToCartItem2 = page.locator("//a[text()='Figueroa']/ancestor::div[@class='product']/descendant::a[text()='Add to cart']");
         addToCartItem3 = page.locator("//a[text()='YouTube.sock']/ancestor::div[@class='product']/descendant::a[text()='Add to cart']");
 
-        goToCart = page.locator("//span[@id='numItemsInCart']");
     }
     public void addToCart() {
         page.navigate(URL_CATALOGUE_PAGE);
 
         ShowingNineItems.click();
-
         addToCartItem1.click();
         page.waitForLoadState();
         addToCartItem2.click();
         page.waitForLoadState();
         addToCartItem3.click();
         page.waitForLoadState();
-
-        goToCart.click();
-
     }
 }

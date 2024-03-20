@@ -9,7 +9,6 @@ version = '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
 }
-
 def allureVersion = "2.25.0"
 
 dependencies {
@@ -17,20 +16,21 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
-    testImplementation 'org.jetbrains:annotations:24.0.0'
+
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+
+    testImplementation 'org.jetbrains:annotations:24.0.0'
     testImplementation group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.10.2'
-
     implementation 'com.microsoft.playwright:playwright:1.41.2'
-
-    implementation 'com.github.javafaker:javafaker:1.0.2'
-
     testImplementation platform("io.qameta.allure:allure-bom:$allureVersion")
     testImplementation 'io.qameta.allure:allure-junit5'
 
     implementation group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.29'
+
+    implementation 'com.github.javafaker:javafaker:1.0.2'
+
+
 }
 
-test {
-    useJUnitPlatform()
+tasks.withType(Test).configureEach {    useJUnitPlatform()
 }

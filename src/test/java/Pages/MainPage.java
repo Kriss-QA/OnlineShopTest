@@ -19,7 +19,6 @@ public class MainPage {
 
 
     public void openMainPage(String url){
-
         page.navigate(url);
     }
     //  browser.newPage browser.newPage(new Browser.NewPageOptions().setUrl(""))
