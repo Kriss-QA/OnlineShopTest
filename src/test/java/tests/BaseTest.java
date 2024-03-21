@@ -2,11 +2,12 @@ package tests;
 
 import com.github.javafaker.Faker;
 import com.microsoft.playwright.*;
-import org.junit.jupiter.api.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
 /*позволяет создать один экземпляр тестового класса и повторно использовать между тестами
 позволят работать со статическими методами */
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+
 public abstract class BaseTest {
     Browser browser;
     Page page;
@@ -14,8 +15,8 @@ public abstract class BaseTest {
 
     Faker faker;
 
-    @BeforeAll
-    public void launchBrowser() {
+    @BeforeClass
+    public void setUp() {
         browser = Playwright.create().chromium()
                 .launch(new BrowserType.LaunchOptions().setHeadless(false).setChannel("chrome"));
 
@@ -23,7 +24,7 @@ public abstract class BaseTest {
         context = browser.newContext();
     }
 
-    @AfterAll
+    @AfterClass
     public void tearDown() {
         if (browser != null) {
             browser.close();
