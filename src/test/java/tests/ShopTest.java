@@ -17,17 +17,19 @@ public class ShopTest extends BaseTest {
     @Test
     public void authUser(){
         MainPage mainPage = new MainPage(page);
-          MainPage.openMainPage();
-          MainPage.registrationUser();
+          mainPage.openMainPage();
+          mainPage.registrationUser();
 
         CataloguePage cataloguePage = new CataloguePage(page);
         new CataloguePage(page).addToCart();
         page.waitForLoadState();
 
         CartPage cartPage = new CartPage(page);
-        CartPage.openCartPage();
+        cartPage.openCartPage();
         page.waitForLoadState();
+        cartPage.getItemsSum();
+        cartPage.getSubtotal();
 
-        assertEquals(CartPage.itemsSum, CartPage.SubtotalValue);
+        assertEquals(cartPage.sumAllItems(), cartPage.subtotalValue());
     }
 }
