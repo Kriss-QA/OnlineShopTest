@@ -24,12 +24,12 @@ public class MainPage {
         this.page = page;
 
         RegisterButton = page.getByText("Register");
-        usernameField = page.getByText("username");
+        usernameField = page.locator("#register-username-modal");
         firstNameField = page.getByText("first name");
         lastNameField = page.getByText("last name");
         emailField = page.getByText("email");
-        passwordField = page.locator("#password-modal");
-        RegistrationButton = page.locator(".fa fa-sign-in");
+        passwordField = page.locator("#register-password-modal");
+        RegistrationButton = page.locator("#tabRegister").getByRole(AriaRole.LINK, new Locator.GetByRoleOptions().setName("Register"));
 
         catalogueButton = page.locator("#tabCatalogue").getByRole(AriaRole.LINK, new Locator.GetByRoleOptions().setName("Catalogue"));
     }
