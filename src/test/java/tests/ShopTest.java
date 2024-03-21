@@ -9,9 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class ShopTest extends BaseTest {
-    public final static String URL_MAIN_PAGE = "http://localhost/";
-    public final static String URL_CART_PAGE = "http://localhost/basket/";
-
 
     /**
      * Вызываем методы с MainPage открываем url главной страницы и регистрируем пользователя
@@ -20,16 +17,15 @@ public class ShopTest extends BaseTest {
     @Test
     public void authUser(){
         MainPage mainPage = new MainPage(page);
-        mainPage.openMainPage(URL_MAIN_PAGE);
-        new MainPage(page).registrationUser();
+          MainPage.openMainPage();
+          MainPage.registrationUser();
 
-        new MainPage(page).catalogueButton();
-
+        CataloguePage cataloguePage = new CataloguePage(page);
         new CataloguePage(page).addToCart();
         page.waitForLoadState();
 
         CartPage cartPage = new CartPage(page);
-        cartPage.openCartPage(URL_CART_PAGE);
+        CartPage.openCartPage();
         page.waitForLoadState();
 
         assertEquals(CartPage.itemsSum, CartPage.SubtotalValue);

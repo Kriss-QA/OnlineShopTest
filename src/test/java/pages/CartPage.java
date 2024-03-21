@@ -3,8 +3,6 @@ package pages;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public class CartPage {
     protected static Page page;
     public Locator items;
@@ -13,13 +11,14 @@ public class CartPage {
     public static double SubtotalValue;
 
 
-    public void openCartPage(String url) {
-        page.navigate(url);
-    }
     public CartPage(Page page) {
         this.page = page;
         items = page.locator("//tr[@class='item']/td[6]");
         orderSubtotal = page.locator("th#orderSubtotal");
+    }
+
+    public void openCartPage() {
+        page.navigate("http://localhost/basket.html");
     }
 
     // Найдем все элементы с классом "item" на странице корзины

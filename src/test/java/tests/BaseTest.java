@@ -16,7 +16,7 @@ public abstract class BaseTest {
     @BeforeAll
     public void launchBrowser() {
         playwright = Playwright.create();
-        browser = playwright.chromium()
+        browser = playwright.firefox()
                             .launch(new BrowserType   //устанавливаем и открываем браузер, без окна
                             .LaunchOptions()
                             .setHeadless(false));

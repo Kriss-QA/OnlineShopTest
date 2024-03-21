@@ -3,6 +3,7 @@ package pages;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.github.javafaker.Faker;
+import com.microsoft.playwright.options.AriaRole;
 
 
 public class MainPage {
@@ -18,11 +19,6 @@ public class MainPage {
     public final Locator catalogueButton;
 
 
-    public void openMainPage(String url){
-        page.navigate(url);
-    }
-    //  browser.newPage browser.newPage(new Browser.NewPageOptions().setUrl(""))
-
     //  cоздаем конструктор, определяем  локаторы
     public MainPage(Page page) {
         this.page = page;
@@ -35,39 +31,29 @@ public class MainPage {
         passwordField = page.locator("#password-modal");
         RegistrationButton = page.locator(".fa fa-sign-in");
 
-        catalogueButton = page.getByText("CATALOGUE");
-
-        // logInButton = page.getByText("Log in");
+        catalogueButton = page.locator("#tabCatalogue").getByRole(AriaRole.LINK, new Locator.GetByRoleOptions().setName("Catalogue"));
     }
 
+public void openMainPage() {
 
-/* String username1=faker.name().username();
-String password1=faker.internet().password();
-
-    public String generateRandomUsername() {
-           return faker.name().username();
-       }
-    public String generateRandomPassword() {
-           return faker.internet().password();
-    } */
-
+    page.navigate("http://localhost/");
+}
 
     //  регистрация пользователя заполняем поля
     public void registrationUser() {
 
         page.waitForLoadState();
         RegisterButton.click();
+        page.waitForLoadState();
         usernameField.fill(faker.name().username());
         firstNameField.fill(faker.name().firstName());
         lastNameField.fill(faker.name().lastName());
         emailField.fill(faker.internet().emailAddress());
         passwordField.fill(faker.internet().password());
-
         RegistrationButton.click();
-    }
-    //  переход на страницу каталога
-        public void catalogueButton() {
-        catalogueButton.click();
+        page.waitForLoadState();
 
+        catalogueButton.click();
+        page.waitForLoadState();
     }
 }
