@@ -1,4 +1,4 @@
-package Pages;
+package pages;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
@@ -55,6 +55,7 @@ String password1=faker.internet().password();
     //  регистрация пользователя заполняем поля
     public void registrationUser() {
 
+        page.waitForLoadState();
         RegisterButton.click();
         usernameField.fill(faker.name().username());
         firstNameField.fill(faker.name().firstName());

@@ -1,8 +1,8 @@
-package Test;
+package tests;
 
-import Pages.CartPage;
-import Pages.MainPage;
-import Pages.CataloguePage;
+import pages.CartPage;
+import pages.MainPage;
+import pages.CataloguePage;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ShopTest extends BaseTest {
     public final static String URL_MAIN_PAGE = "http://localhost/";
-    public final static String URL_CART_PAGE = "http://localhost/basket";
+    public final static String URL_CART_PAGE = "http://localhost/basket/";
 
 
     /**

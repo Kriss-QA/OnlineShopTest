@@ -1,4 +1,4 @@
-package Test;
+package tests;
 
 import com.github.javafaker.Faker;
 import com.microsoft.playwright.*;
@@ -17,7 +17,7 @@ public abstract class BaseTest {
     public void launchBrowser() {
         playwright = Playwright.create();
         browser = playwright.chromium()
-                            .launch(new BrowserType   //устанавлтваем и открываем браузер, без окна
+                            .launch(new BrowserType   //устанавливаем и открываем браузер, без окна
                             .LaunchOptions()
                             .setHeadless(false));
         faker = new Faker();
