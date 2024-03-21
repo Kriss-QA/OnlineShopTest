@@ -46,4 +46,4 @@ public abstract class BaseTest {
     public void closeContext() {
         context.close(); //закрываем браузер
     }
-}
+}*/
