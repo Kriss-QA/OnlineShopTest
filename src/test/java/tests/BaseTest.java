@@ -4,8 +4,8 @@ import com.github.javafaker.Faker;
 import com.microsoft.playwright.*;
 import org.junit.jupiter.api.*;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS) /*позволяет создать один экземпляр тестового класса и повторно использовать между тестами
-позволят работать со статическими методами*/
+@TestInstance(TestInstance.Lifecycle.PER_CLASS) /*позволяет создать один экземпляр тестового класса
+и повторно использовать между тестами. Позволят работать со статическими методами*/
 
 public abstract class BaseTest {
     private Playwright playwright;
@@ -21,11 +21,6 @@ public abstract class BaseTest {
         faker = new Faker();
     }
 
-    @AfterAll
-    public void closeBrowser() {
-        playwright.close();
-    }
-
     @BeforeEach
     public void createContextAndPage() {
         context = browser.newContext();
@@ -36,6 +31,11 @@ public abstract class BaseTest {
         public void closeContext() {
             context.close();
         }
+
+    @AfterAll
+    public void closeBrowser() {
+        playwright.close();
+    }
 }
 
     /* У Playwright есть концепция BrowserContext, которая представляет собой изолированный в памяти

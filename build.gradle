@@ -35,4 +35,5 @@ dependencies {
 
 test {
     useTestNG()
+    finalizedBy allureReport
 }
