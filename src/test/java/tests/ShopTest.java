@@ -1,5 +1,7 @@
 package tests;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Owner;
 import pages.CartPage;
 import pages.MainPage;
 import pages.CataloguePage;
@@ -15,6 +17,8 @@ public class ShopTest extends BaseTest {
       */
 
     @Test
+    @Owner("Kristiva Vayukova")
+    @Description("Выполняется регистрация пользователя на главной странице онлайн магазина")
     public void authUser(){
         MainPage mainPage = new MainPage(page);
           mainPage.openMainPage();
