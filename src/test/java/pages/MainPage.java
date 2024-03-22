@@ -16,7 +16,6 @@ public class MainPage {
     public final Locator lastNameField;
     public final Locator emailField;
     public final Locator passwordField;
-    public final Locator RegistrationButton;
     public final Locator catalogueButton;
 
 
@@ -30,7 +29,6 @@ public class MainPage {
         lastNameField = page.getByPlaceholder("last name");
         emailField = page.getByPlaceholder("email");
         passwordField = page.locator("#register-password-modal");
-        RegistrationButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Register"));
 
         catalogueButton = page.locator("#tabCatalogue").getByRole(AriaRole.LINK, new Locator.GetByRoleOptions().setName("Catalogue"));
     }
@@ -49,7 +47,7 @@ public class MainPage {
         lastNameField.fill(faker.name().lastName());
         emailField.fill(faker.internet().emailAddress());
         passwordField.fill(faker.internet().password());
-        RegistrationButton.click();
+        passwordField.press("Enter");
         page.waitForLoadState();
 
         catalogueButton.click();
