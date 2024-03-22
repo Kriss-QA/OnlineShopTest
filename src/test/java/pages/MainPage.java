@@ -1,13 +1,14 @@
 package pages;
 
+import com.github.javafaker.Faker;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.github.javafaker.Faker;
 import com.microsoft.playwright.options.AriaRole;
+import io.qameta.allure.Step;
 
 
 public class MainPage {
-    protected final Page page;
+    public final Page page;
     public final Faker faker = new Faker();
     public final Locator RegisterButton;
     public final Locator usernameField;
@@ -23,23 +24,21 @@ public class MainPage {
     public MainPage(Page page) {
         this.page = page;
 
-        RegisterButton = page.getByText("Register");
+        RegisterButton = page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Register"));
         usernameField = page.locator("#register-username-modal");
-        firstNameField = page.getByText("first name");
-        lastNameField = page.getByText("last name");
-        emailField = page.getByText("email");
+        firstNameField = page.getByPlaceholder("first name");
+        lastNameField = page.getByPlaceholder("last name");
+        emailField = page.getByPlaceholder("email");
         passwordField = page.locator("#register-password-modal");
-        RegistrationButton = page.locator("#tabRegister").getByRole(AriaRole.LINK, new Locator.GetByRoleOptions().setName("Register"));
+        RegistrationButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Register"));
 
         catalogueButton = page.locator("#tabCatalogue").getByRole(AriaRole.LINK, new Locator.GetByRoleOptions().setName("Catalogue"));
     }
-
-public void openMainPage() {
-
-    page.navigate("http://localhost/");
+    @Step("Открытие главной страницы онлайн магазина")
+    public void openMainPage() {
+        page.navigate("http://localhost");
 }
-
-    //  регистрация пользователя заполняем поля
+    @Step("Регистрация пользователя")
     public void registrationUser() {
 
         page.waitForLoadState();

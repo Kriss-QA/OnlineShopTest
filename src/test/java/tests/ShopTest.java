@@ -12,8 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ShopTest extends BaseTest {
 
-    /**
-     * Вызываем методы с MainPage открываем url главной страницы и регистрируем пользователя
+    /* Вызываем методы с MainPage открываем url главной страницы и регистрируем пользователя
       */
 
     @Test
