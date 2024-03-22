@@ -1,23 +1,22 @@
 package tests;
 
-import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
-import pages.CartPage;
-import pages.MainPage;
-import pages.CataloguePage;
 import org.junit.jupiter.api.Test;
+import pages.CartPage;
+import pages.CataloguePage;
+import pages.MainPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
+//@ExtendWith(ScreenshotTest)
 public class ShopTest extends BaseTest {
 
     /* Вызываем методы с MainPage открываем url главной страницы и регистрируем пользователя
       */
 
     @Test
-    @Owner("Kristiva Vayukova")
-    @Description("Выполняется регистрация пользователя на главной странице онлайн магазина")
+    @Owner("Kristina Vayukova")
+
     public void authUser(){
         MainPage mainPage = new MainPage(page);
           mainPage.openMainPage();

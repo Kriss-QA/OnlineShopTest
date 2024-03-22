@@ -2,6 +2,7 @@ package pages;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import io.qameta.allure.Step;
 
 
 public class CataloguePage {
@@ -24,6 +25,8 @@ public class CataloguePage {
         addToCartItem3 = page.locator("//a[text()='YouTube.sock']/ancestor::div[@class='product']/descendant::a[text()='Add to cart']");
 
     }
+
+    @Step("Открываем страницу с каталогом и добавляем 3 товара в корзину")
     public void addToCart() {
         page.navigate(URL_CATALOGUE_PAGE);
 
