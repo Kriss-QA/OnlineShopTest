@@ -1,23 +1,59 @@
 package tests;
 
-import com.microsoft.playwright.Page;
-import io.qameta.allure.Allure;
-import org.junit.jupiter.api.extension.ExtensionContext;
-import org.junit.jupiter.api.extension.TestWatcher;
+//import java.io.ByteArrayOutputStream;
+//import java.nio.file.Paths;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
-public class ScreenshotTest implements TestWatcher {
+/*public class AllureScreenshotTest implements TestWatcher {
     private final Page page;
 
-    public ScreenshotTest(Page page) {
+    public AllureScreenshotTest(Page page) {
         this.page = page;
     }
+@Override
+    public void testSuccessful(ExtensionContext context) {
+    // Создаем поток для записи данных скриншота
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+    // Сохраняем скриншот на диск
+    page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("screenshot.png")));
+
+    // Читаем данные скриншота в массив байтов
+    byte[] screenshotBytes = outputStream.toByteArray();
+
+
+    // Добавляем скриншот в отчет Allure
+    Allure.getLifecycle().addAttachment(
+            "Screenshot", "image/png", "png", screenshotBytes);
+ }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* import java.io.File;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
 
     @Override
+
     public void testSuccessful(ExtensionContext context) {
         try {
             String screenshotPath = "screenshot.png";
@@ -51,4 +87,4 @@ public class ScreenshotTest implements TestWatcher {
             e.printStackTrace();
         }
     }
-}
+}*/
