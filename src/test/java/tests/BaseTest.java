@@ -2,17 +2,11 @@ package tests;
 
 import com.github.javafaker.Faker;
 import com.microsoft.playwright.*;
-import io.qameta.allure.Allure;
+import io.qameta.allure.Attachment;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInstance;
-import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-
-import java.io.ByteArrayInputStream;
-import java.nio.file.Paths;
-import java.util.UUID;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS) /*позволяет создать один экземпляр тестового класса
 и повторно использовать между тестами. Позволят работать со статическими методами*/
@@ -28,7 +22,9 @@ public abstract class BaseTest {
     @BeforeAll
     public void setUp() {
         playwright = Playwright.create();
-        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false).setChannel("chrome"));
+        browser = playwright.chromium()
+                .launch(new BrowserType.LaunchOptions().setHeadless(false).setChannel("chrome"));
+
         faker = new Faker();
     }
 
@@ -42,8 +38,20 @@ public abstract class BaseTest {
     public void closeBrowser() {
         playwright.close();
     }
+    @Attachment(value = "screen", type = "image/jpeg", fileExtension = ".jpg")
+    @SuppressWarnings("UnusedReturnValue")
+    private byte[] attachScreenshotToAllure(byte[] screenshot) {
+        return screenshot;
+    }
+}
 
-    @AfterMethod
+
+
+
+
+
+
+    /*@AfterMethod
     public void attachFilesToSuccessTest(ITestResult result) {
         if (result.isSuccess()) {
             String uuid = UUID.randomUUID().toString();
@@ -54,13 +62,8 @@ public abstract class BaseTest {
             Allure.addAttachment(uuid, new ByteArrayInputStream(screenshot));
         }
     }
-}
 
-
-
-
-
-/*@AfterMethod
+   /*@AfterMethod
         public void attachFilesToFailedTest (ITestResult result) throws IOException {
             if (!result.isSuccess()) {
                 String uuid = UUID.randomUUID().toString();
