@@ -7,7 +7,7 @@
 
 1. Установить и запустить Docker desktop
 2. В терминале ввести:
-   
+
     git clone https://github.com/microservices-demo/microservices-demo
    
     cd microservices-demo
