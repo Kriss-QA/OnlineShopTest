@@ -5,5 +5,12 @@
 В проекте использовать стек Java, Gradle, JUnit5, Playwright , Faker/ либо любой другой генератор данных, Allure2. 
 После прохождения тестов должен формироваться Allure-отчет.
 
-1. Установить и запустить Docker desktop.
-2. Поднять контейнер из https://github.com/microservices-demo/microservices-demo
+1. Установить и запустить Docker desktop
+2. В терминале ввести:
+    git clone https://github.com/microservices-demo/microservices-demo
+    cd microservices-demo
+    docker-compose -f deploy/docker-compose/docker-compose.yml up -d
+   
+Для проверки работоспособности тестового сайта перейти на http://localhost/
+После завершения работы с сайтом необходимо ввести в терминале:
+    docker-compose -f deploy/docker-compose/docker-compose.yml down
