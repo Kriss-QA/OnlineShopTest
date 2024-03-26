@@ -7,10 +7,13 @@
 
 1. Установить и запустить Docker desktop
 2. В терминале ввести:
+   
     git clone https://github.com/microservices-demo/microservices-demo
     cd microservices-demo
     docker-compose -f deploy/docker-compose/docker-compose.yml up -d
    
 Для проверки работоспособности тестового сайта перейти на http://localhost/
+
 После завершения работы с сайтом необходимо ввести в терминале:
+
     docker-compose -f deploy/docker-compose/docker-compose.yml down
