@@ -34,19 +34,15 @@ public class ShopTest extends BaseTest {
         cartPage.getSubtotal();
 
         assertEquals(cartPage.sumAllItems(), cartPage.subtotalValue());
+
+        byte[] screenshot = page.screenshot();
+        attachScreenshotToAllure(screenshot);
     }
 
-    public class AllureScreenshot {
-        @Attachment(value = "Screenshot", type = "image/png")
-        public static byte[] attachScreenshot(byte[] screenshot) {
-            return screenshot;
-        }
 
-        public void addScreenShot() {
-            CartPage cartPage = new CartPage(page);
-            cartPage.openCartPage();
-            byte[] screenshot = page.screenshot();
-            AllureScreenshot.attachScreenshot(screenshot);
-        }
+    @Attachment(value = "Screenshot", type = "image/png")
+    private byte[] attachScreenshotToAllure(byte[] screenshot) {
+        return screenshot;
     }
 }
+

@@ -2,7 +2,6 @@ package tests;
 
 import com.github.javafaker.Faker;
 import com.microsoft.playwright.*;
-import io.qameta.allure.Attachment;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -38,11 +37,6 @@ public abstract class BaseTest {
     public void closeBrowser() {
         playwright.close();
     }
-    @Attachment(value = "screen", type = "image/jpeg", fileExtension = ".jpg")
-    @SuppressWarnings("UnusedReturnValue")
-    private byte[] attachScreenshotToAllure(byte[] screenshot) {
-        return screenshot;
-    }
 }
 
 
@@ -51,7 +45,15 @@ public abstract class BaseTest {
 
 
 
-    /*@AfterMethod
+
+
+
+
+
+
+
+
+/*@AfterMethod
     public void attachFilesToSuccessTest(ITestResult result) {
         if (result.isSuccess()) {
             String uuid = UUID.randomUUID().toString();
@@ -62,6 +64,7 @@ public abstract class BaseTest {
             Allure.addAttachment(uuid, new ByteArrayInputStream(screenshot));
         }
     }
+}
 
    /*@AfterMethod
         public void attachFilesToFailedTest (ITestResult result) throws IOException {
