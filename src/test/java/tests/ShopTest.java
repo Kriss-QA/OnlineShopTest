@@ -1,6 +1,5 @@
 package tests;
 
-import io.qameta.allure.Attachment;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Test;
 import pages.CartPage;
@@ -12,8 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 //@ExtendWith(ScreenshotTest)
 public class ShopTest extends BaseTest {
 
-    /* Вызываем методы с MainPage открываем url главной страницы и регистрируем пользователя
-     */
+    /* Вызываем методы с MainPage открываем url главной страницы и регистрируем пользователя*/
 
     @Test
     @Owner("Kristina Vayukova")
@@ -34,15 +32,9 @@ public class ShopTest extends BaseTest {
         cartPage.getSubtotal();
 
         assertEquals(cartPage.sumAllItems(), cartPage.subtotalValue());
-
-        byte[] screenshot = page.screenshot();
-        attachScreenshotToAllure(screenshot);
-    }
-
-
-    @Attachment(value = "Screenshot", type = "image/png")
-    private byte[] attachScreenshotToAllure(byte[] screenshot) {
-        return screenshot;
     }
 }
+
+
+
 

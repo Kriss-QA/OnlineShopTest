@@ -6,10 +6,11 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS) /*позволяет создать один экземпляр тестового класса
 и повторно использовать между тестами. Позволят работать со статическими методами*/
-
+@ExtendWith(AfterExecutionTestListener.class)
 public abstract class BaseTest {
     private Playwright playwright;
     private Browser browser;
@@ -36,57 +37,6 @@ public abstract class BaseTest {
     @AfterAll
     public void closeBrowser() {
         playwright.close();
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*@AfterMethod
-    public void attachFilesToSuccessTest(ITestResult result) {
-        if (result.isSuccess()) {
-            String uuid = UUID.randomUUID().toString();
-            byte[] screenshot = page.screenshot(new Page.ScreenshotOptions()
-                    .setPath(Paths.get("build/allure-results/screenshot_" + uuid + "screenshot.png"))
-                    .setFullPage(true));
-
-            Allure.addAttachment(uuid, new ByteArrayInputStream(screenshot));
-        }
-    }
-}
-
-   /*@AfterMethod
-        public void attachFilesToFailedTest (ITestResult result) throws IOException {
-            if (!result.isSuccess()) {
-                String uuid = UUID.randomUUID().toString();
-                byte[] screenshot = page.screenshot(new Page.ScreenshotOptions()
-                        .setPath(Paths.get("build/allure-results/screenshot_" + uuid + "screenshot.png"))
-                        .setFullPage(true));
-
-                Allure.addAttachment(uuid, new ByteArrayInputStream(screenshot));
-                Allure.addAttachment("source.html", "text/html", page.content());
-
-                if (isTraceEnabled) {
-                    String traceFileName = String.format("build/%s_trace.zip", uuid);
-                    Path tracePath = Paths.get(traceFileName);
-                    context.tracing()
-                            .stop(new Tracing.StopOptions()
-                                    .setPath(tracePath));
-                    Allure.addAttachment("trace.zip", new ByteArrayInputStream(Files.readAllBytes(tracePath)));
-                }
-            }
-        }
     }
 }
 
